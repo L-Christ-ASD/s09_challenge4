@@ -36,7 +36,7 @@ jobs:
         run: go run main.go
   
   deploy:
-    runs-on: s09-challenge
+    runs-on: self-hosted
     needs: build
     
       
