@@ -34,5 +34,9 @@ jobs:
       
       - name: Run Go script
         run: go run main.go
-
+  
+  deploy:
+    runs-on: s09-challenge
+    needs: build
+    
       
