@@ -10,22 +10,29 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       matrix:
-        go: [ '1.14', '1.13' ]
+        go: ['1.14', '1.13']
     name: Go ${{ matrix.go }} sample
     steps:
       - uses: actions/checkout@v4
-
+      
       - name: Setup go
         uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
-
-      - name: Install dependencies 
-        run: go get -v github.com/Code-Hex/Neo-cowsay/v2 
+        
+      - name: Enable Go modules
+        run: echo "export GO111MODULE=on" >> $GITHUB_ENV
+        
+      - name: Initialize Go module
+        run: go mod init main.go || true
       
-      - name: List files 
-        run: ls -al 
+      - name: Install dependencies
+        run: go get -v github.com/Code-Hex/Neo-cowsay/v2
       
-      - name: Run Go script 
+      - name: List files
+        run: ls -al
+      
+      - name: Run Go script
         run: go run main.go
+
       
