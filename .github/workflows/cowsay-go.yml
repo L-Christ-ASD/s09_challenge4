@@ -14,8 +14,18 @@ jobs:
     name: Go ${{ matrix.go }} sample
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup go
         uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
-      - run: go run main.go
+
+      - name: Install dependencies 
+        run: go get -v github.com/Code-Hex/Neo-cowsay/v2 
+      
+      - name: List files 
+        run: ls -al 
+      
+      - name: Run Go script 
+        run: go run main.go
+      
