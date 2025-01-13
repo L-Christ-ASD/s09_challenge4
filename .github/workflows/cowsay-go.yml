@@ -35,8 +35,5 @@ jobs:
       - name: Run Go script
         run: go run main.go
   
-  deploy:
-    runs-on: self-hosted
-    needs: build
     
       
