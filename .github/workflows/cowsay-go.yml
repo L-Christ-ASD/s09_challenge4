@@ -44,10 +44,7 @@ jobs:
           go build -o mon-cowsay-go main.go
 
 
-  deploy:
-    needs: build 
-    runs-on: self-hosted
-    
+  
       
 
 
