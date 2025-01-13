@@ -33,7 +33,23 @@ jobs:
         run: ls -al
       
       - name: Run Go script
-        run: go run main.go
+        run: go run main.go > go_cowsay.txt
+
+      - name: test output
+        run: |
+          grep "(oo)" go_cowsay.txt
+
+      - name: create binary file
+        run: |
+          go build -o mon-cowsay-go main.go
+
+
+  deploy: 
+    runs-on: self-hosted
+    needs: build
+      
+
+
   
     
       
