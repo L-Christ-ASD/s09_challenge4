@@ -6,6 +6,12 @@ name: docker push
 on:
   workflow_dispatch:
   push:
+    tags: 
+      - 'v*'
+
+  schedule:
+    # Planifier l'exécution tous les jours à minuit UTC
+    - cron: '0 0 * * *'
 
 
 env:
@@ -54,9 +60,15 @@ jobs:
 
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=latest
       
       - name: Print Docker tags 
         run: echo "${{ steps.meta.outputs.tags }}"
+
+      - name: Test Docker Image
+        run: |
+          docker run --rm "${{ steps.meta.outputs.tags }}" cowsay "Test Passed!"
+
         
       - name: Login to Docker Hub
         uses: docker/login-action@v3
