@@ -67,7 +67,7 @@ jobs:
 
       - name: Test Docker Image
         run: |
-          docker run --rm "${{ steps.meta.outputs.tags }}" cowsay "Test Passed!"
+          docker run --rm "${{ steps.meta.outputs.tags }}" "Test Passed!"
 
         
       - name: Login to Docker Hub
