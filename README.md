@@ -1,6 +1,6 @@
 # s09_challenge4
 
-![Cowsay-Go](https://github.com/L-Christ-ASD/s09_challenge4/actions/workflows/cowsay-go/badge.svg)
+![Cowsay-Go](https://github.com/L-Christ-ASD/s09_challenge4/actions/workflows/cowsay-go.yml/badge.svg)
 
 ## Cinquième challenge Github
 
