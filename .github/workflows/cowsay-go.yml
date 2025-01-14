@@ -36,19 +36,19 @@ jobs:
 
       
 
-#      - name: Upload static files as artifact
-#         id: deployment
-#         uses: actions/upload-artifact@v4 # or specific "vX.X.X" version tag for this action
-#         with:
-#           path: cowsay-go.txt
- #          name: myapp-cowsay-go
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-artifact@v4 # or specific "vX.X.X" version tag for this action
+        with:
+          path: cowsay-go.txt
+          name: myapp-cowsay-go
 
-#   deploy:
-#     runs-on: self-hosted
-#     needs: build
-#     steps:
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
 #      - run: sudo -i
-#       - uses: actions/download-artifact@v4
-  #       with:
-    #       path: /var/www/html/
-      #     name: notrevache
+      - uses: actions/download-artifact@v4
+        with:
+          path: /var/www/html/
+          name: myapp-cowsay-go
