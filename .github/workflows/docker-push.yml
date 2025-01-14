@@ -52,8 +52,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ../..
-          dockerfile: ../../09_challenge4/Dockerfile
+          context: ./s09_challenge4
           push: true
           tags: "${{ steps.meta.outputs.tags }}"
           labels: "${{ steps.meta.outputs.labels }}"
