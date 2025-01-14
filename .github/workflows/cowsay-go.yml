@@ -32,9 +32,9 @@ jobs:
 
       - name: Build the executable
         run: |
-          echo "go build -o myapp-cowsay-go main.go" > cowsay-go.txt
-
-      
+          go build -o myapp-cowsay-go main.go
+          ls -al 
+          file myapp-cowsay-go 
 
       - name: Upload static files as artifact
         id: deployment
