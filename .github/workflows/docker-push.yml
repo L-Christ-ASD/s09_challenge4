@@ -23,6 +23,10 @@ jobs:
       - name: Verify context files
         run: ls -al ../..
 
+      - name: Verify curent file
+        run: pwd
+
+
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
