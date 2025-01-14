@@ -51,5 +51,5 @@ jobs:
         run: whoami
       - uses: actions/download-artifact@v4
         with:
-          path: /var/www/html/
+          path: myapp-cowsay-go
           name: myapp-cowsay-go
