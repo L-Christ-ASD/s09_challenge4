@@ -20,6 +20,9 @@ jobs:
       - name: checkout-file
         uses: actions/checkout@v4
 
+      - name: Verify context files
+        run: ls -al ../..
+
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
@@ -50,6 +53,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ../..
+          dockerfile: ../../09_challenge4/Dockerfile
           push: true
           tags: "${{ steps.meta.outputs.tags }}"
           labels: "${{ steps.meta.outputs.labels }}"
