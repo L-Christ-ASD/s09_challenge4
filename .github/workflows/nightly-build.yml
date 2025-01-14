@@ -5,6 +5,10 @@ on:
     # Planifier l'exécution tous les jours à minuit UTC
     - cron: '0 0 * * *'
 
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME: christasd/myapp-cowsay-go
+
 jobs:
   build-and-push:
     runs-on: ubuntu-24.04
@@ -13,6 +17,17 @@ jobs:
     # Étape 1 : Vérifier le code source du dépôt
     - name: Checkout repository
       uses: actions/checkout@v3
+
+    - name: Docker meta
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: |
+          "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
+        tags: |
+
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
 
     # Étape 2 : Connexion au registre Docker
     - name: Log in to Docker Hub
