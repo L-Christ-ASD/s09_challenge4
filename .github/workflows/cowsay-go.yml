@@ -27,13 +27,18 @@ jobs:
       - name: Install dependencies
         run: go get -v github.com/Code-Hex/Neo-cowsay/v2
 
-      - name: Build the executable
-        run: |
-          echo "go build -o myapp-cowsay-go main.go" > cowsay-go.txt
+      - name: run cowsay-go.txt
+        run: go run main.go
 
       - name: test output
         run: |
           grep "(oo)" go_cowsay.txt
+
+      - name: Build the executable
+        run: |
+          echo "go build -o myapp-cowsay-go main.go" > cowsay-go.txt
+
+      
 
 #      - name: Upload static files as artifact
 #         id: deployment
