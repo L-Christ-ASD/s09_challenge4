@@ -14,7 +14,7 @@ env:
     
 
 jobs:
-  login:
+  push_dockerhub:
     runs-on: ubuntu-24.04
     steps:
       - name: checkout-file
@@ -25,7 +25,23 @@ jobs:
 
       - name: Verify curent file
         run: pwd
-        
+
+      - name: Enable Go modules
+        run: |
+          echo "export GO111MODULE=on" >> $GITHUB_ENV
+          go mod init main.go || true
+
+      - name: Install dependencies
+        run: go get -v github.com/Code-Hex/Neo-cowsay/v2
+
+      - name: run cowsay main.go
+        run: go run main.go
+
+      - name: Build the executable
+        run: |
+          go build -o myapp-cowsay-go main.go
+          ls -al 
+          file myapp-cowsay-go 
 
 
       - name: Docker meta
@@ -57,7 +73,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context:  /home/runner/work/s09_challenge4/s09_challenge4/
+          context: .
           push: true
           tags: "${{ steps.meta.outputs.tags }}"
           labels: "${{ steps.meta.outputs.labels }}"
