@@ -1,53 +1,53 @@
 ---
 
-name: compile and deploy GoScript
+name: Build and Deploy GoScript
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
-    strategy:
-      matrix:
-        go: ['1.16', '1.17', '1.18']
-    name: Go ${{ matrix.go }} sample
+    runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Setup go
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: ${{ matrix.go }}
-        
+          go-version: '1.18'
+
       - name: Enable Go modules
-        run: echo "export GO111MODULE=on" >> $GITHUB_ENV
-        
-      - name: Initialize Go module
-        run: go mod init main.go || true
-      
+        run: |
+          echo "export GO111MODULE=on" >> $GITHUB_ENV
+          go mod init main.go || true
+
       - name: Install dependencies
         run: go get -v github.com/Code-Hex/Neo-cowsay/v2
-      
-      - name: List files
-        run: ls -al
-      
-      - name: Run Go script
-        run: go run main.go > go_cowsay.txt
+
+      - name: Build the executable
+        run: |
+          echo "go build -o myapp-cowsay-go main.go" > cowsay-go.txt
 
       - name: test output
         run: |
           grep "(oo)" go_cowsay.txt
 
-      - name: create binary file
-        run: |
-          go build -o mon-cowsay-go main.go
+#      - name: Upload static files as artifact
+#         id: deployment
+#         uses: actions/upload-artifact@v4 # or specific "vX.X.X" version tag for this action
+#         with:
+#           path: cowsay-go.txt
+ #          name: myapp-cowsay-go
 
-
-  
-      
-
-
-  
-    
-      
+#   deploy:
+#     runs-on: self-hosted
+#     needs: build
+#     steps:
+#      - run: sudo -i
+#       - uses: actions/download-artifact@v4
+  #       with:
+    #       path: /var/www/html/
+      #     name: notrevache
