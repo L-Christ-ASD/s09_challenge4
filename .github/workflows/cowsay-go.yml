@@ -47,7 +47,8 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
-#      - run: sudo -i
+      - name: Create target directory 
+        run: chmod -R 755 /var/www/html/
       - uses: actions/download-artifact@v4
         with:
           path: /var/www/html/
