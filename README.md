@@ -42,3 +42,5 @@ func main() {
     - Préparer un Dockerfile avec l'exécutable dedans
     - Publiez l'image sur le Dockerhub via une workflow Github action
 3. Mettre en place un système de mise à jour automatique pour avoir une nouvelle image générée chaque nuit.
+
+test
