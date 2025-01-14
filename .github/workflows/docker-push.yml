@@ -25,6 +25,7 @@ jobs:
 
       - name: Verify curent file
         run: pwd
+        
 
 
       - name: Docker meta
