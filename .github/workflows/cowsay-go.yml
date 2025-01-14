@@ -32,7 +32,7 @@ jobs:
 
       - name: test output
         run: |
-          grep "(oo)" go_cowsay.txt
+          grep "(oo)" main.go
 
       - name: Build the executable
         run: |
