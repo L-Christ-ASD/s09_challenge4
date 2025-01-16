@@ -1,6 +1,7 @@
 # s09_challenge4
 
 ![Build and Deploy GoScript](https://github.com/L-Christ-ASD/s09_challenge4/actions/workflows/cowsay-go.yml/badge.svg)
+![docker push](https://github.com/L-Christ-ASD/s09_challenge4/actions/workflows/docker-push.yml/badge.svg)
 
 ## Cinquième challenge Github
 
