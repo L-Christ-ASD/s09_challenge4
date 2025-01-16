@@ -37,17 +37,17 @@ jobs:
       - name: run cowsay main.go
         run: go run main.go
 
-      - name: Build the executable
-        run: |
-          go build -o myapp-cowsay-go main.go
-          ls -al 
-          file myapp-cowsay-go 
-
       - name: try a cow that say somethink
         run: |
           myapp-cowsay-go $MESSAGE
         env:
           MESSAGE: ${{ inputs.message }}
+
+      - name: Build the executable
+        run: |
+          go build -o myapp-cowsay-go main.go
+          ls -al 
+          file myapp-cowsay-go 
 
       - name: Upload static files as artifact
         id: deployment
