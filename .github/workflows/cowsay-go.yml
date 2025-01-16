@@ -45,7 +45,7 @@ jobs:
 
       - name: try a cow that say somethink
         run: |
-          cowsay $MESSAGE
+          myapp-cowsay-go $MESSAGE
         env:
           MESSAGE: ${{ inputs.message }}
 
