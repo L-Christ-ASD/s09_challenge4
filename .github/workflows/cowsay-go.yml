@@ -39,7 +39,7 @@ jobs:
 
       - name: try a cow that say somethink
         run: |
-          myapp-cowsay-go $MESSAGE
+          go run main.go $MESSAGE
         env:
           MESSAGE: ${{ inputs.message }}
 
