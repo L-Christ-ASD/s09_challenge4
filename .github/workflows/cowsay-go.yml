@@ -37,7 +37,7 @@ jobs:
       - name: run cowsay main.go
         run: go run main.go
 
-      - name: try a cow that say somethink
+      - name: try a cow that say somethink before 'real message'
         run: |
           go run main.go $MESSAGE
         env:

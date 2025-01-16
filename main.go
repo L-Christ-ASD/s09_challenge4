@@ -9,7 +9,7 @@ import (
 
 func main() {
 	// Message à afficher avec la vache
-	message := "Hello, Go World!"
+	message := "Why am i here ?!...Ok, Go World!"
 
 	// Génère le message cowsay
 	cow, err := cowsay.Say(
