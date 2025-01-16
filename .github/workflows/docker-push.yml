@@ -33,6 +33,9 @@ jobs:
       - name: checkout-file
         uses: actions/checkout@v4
 
+      - name: Set message environment variable 
+        run: echo "MESSAGE=${{ github.event.inputs.message }}" >> $GITHUB_ENV
+
       - name: Verify context files
         run: ls -al ../..
 
