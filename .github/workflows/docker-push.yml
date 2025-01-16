@@ -5,6 +5,13 @@ name: docker push
 
 on:
   workflow_dispatch:
+    inputs:
+      message:
+        description: "give a message to cowsay"
+        required: true
+        default: 'why am i here?'
+        type: string
+
   push:
     tags: 
       - 'v*'
