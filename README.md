@@ -47,3 +47,10 @@ func main() {
 3. Mettre en place un système de mise à jour automatique pour avoir une nouvelle image générée chaque nuit.
 
 
+## Ajoutez y :
+
+- un déclencheur manuel qui permet de lancer le build d'une image docker (workflow_dispatch),
+- ajoutez au déclencheur un input qui permet de saisir la version de l'image Docker,
+- utilisez la valeur saisie pour générer votre image Docker et la push sur la registry Docker.  (comming soon, or later)
+
+
