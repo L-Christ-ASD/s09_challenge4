@@ -85,6 +85,11 @@ jobs:
       - name: Inspect Buildx
         run: docker buildx inspect --bootstrap
 
+      - name: were ami
+        run: |
+          pwd
+          ls -ahl
+
 
       - name: Build and push
         uses: docker/build-push-action@v6
