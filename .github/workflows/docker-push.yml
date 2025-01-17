@@ -22,9 +22,17 @@ env:
 jobs:
   push_dockerhub:
     runs-on: ubuntu-24.04
+    strategy: 
+      matrix: 
+        arch: [amd64, arm64]
     steps:
       - name: checkout-file
         uses: actions/checkout@v4
+
+      - name: Set up Go 
+        uses: actions/setup-go@v3 
+        with: 
+          go-version: 1.21
 
       - name: Enable Go modules
         run: |
@@ -39,10 +47,9 @@ jobs:
 
       - name: Build the executable
         run: |
-          go build -o myapp-cowsay-go main.go
+          GOARCH=${{ matrix.arch }} go build -o myapp-cowsay-go-${{ matrix.arch }} main.go
           ls -al 
-          file myapp-cowsay-go 
-
+          file myapp-cowsay-go-${{ matrix.arch }}
 
       - name: Docker meta
         id: meta
