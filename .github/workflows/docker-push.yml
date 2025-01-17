@@ -51,6 +51,10 @@ jobs:
           ls -al 
           file myapp-cowsay-go-${{ matrix.arch }}
 
+      - name: where ami
+        run: |
+          pwd
+
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
